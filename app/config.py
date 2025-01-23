@@ -8,6 +8,7 @@ DOTENV_PATH = os.path.join(Path(os.path.dirname(__file__)).parent, ".env")
 
 class Settings(BaseSettings):
     SCHEDULER_INTERVAL: float = 30
+    BEARER_TOKEN: str
     BOT_TOKEN: str
     DB_NAME: str
     DB_USER: str
