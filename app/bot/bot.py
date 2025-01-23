@@ -39,7 +39,7 @@ async def process_get_data(message: Message):
         # GET FROM API
         async with aiohttp.ClientSession() as session:
             headers = {"Authorization": f"Bearer {app.config.settings.BEARER_TOKEN}"}
-            URL = f'http://wb_bot.railway.internal:8000/api/v1/products/?artikul={article}'
+            URL = f'https://wbbot-production.up.railway.app/api/v1/products?artikul={article}'
             try:
                 async with session.post(URL, headers=headers) as response:
                     if response.status == 200:
@@ -56,7 +56,7 @@ async def process_get_data(message: Message):
                         else:
                             await article_message.answer("Product not found.")
                     else:
-                        await article_message.answer(f"Error: Request failed with status {response.status}")
+                        await article_message.answer(f"Error: Request failed with status {response.status} {response.text}")
             except Exception as e:
                 await article_message.answer(f"An error occurred: {str(e)}")
 
