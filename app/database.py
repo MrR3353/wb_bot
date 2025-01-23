@@ -3,7 +3,7 @@ from sqlalchemy.orm import sessionmaker, declarative_base
 
 from app.config import settings
 
-DATABASE_URL = f"postgresql+asyncpg://{settings.DB_USER}:{settings.DB_PASSWORD}@{settings.DB_HOST}/{settings.DB_NAME}"
+DATABASE_URL = f"postgresql+asyncpg://{settings.POSTGRES_USER}:{settings.POSTGRES_PASSWORD}@{settings.POSTGRES_HOST}/{settings.POSTGRES_DB}"
 
 engine = create_async_engine(DATABASE_URL, echo=True)
 Base = declarative_base()
